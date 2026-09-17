@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAKRAVYUH 1.0 | 8 HRS HACKATHON</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #050811;
+            --bg-card: rgba(10, 16, 30, 0.7);
+            --border-card: rgba(0, 240, 255, 0.18);
+            --accent-cyan: #00f0ff;
+            --accent-blue: #0072ff;
+            --accent-green: #00ff66;
+            --accent-purple: #a855f7;
+            --accent-orange: #ff6b00;
+            --accent-pink: #ff007f;
+
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --font-head: 'Orbitron', sans-serif;
+            --font-sub: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background Particle Canvas */
+        #cyber-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Cyber Grid Background Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Typography & Utility Utility Classes */
+        .glow-text-cyan {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+        }
+
+        .glow-text-orange {
+            color: var(--accent-orange);
+            text-shadow: 0 0 15px rgba(ff, 107, 0, 0.6);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: #000;
+            font-family: var(--font-head);
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.8);
+            color: #000;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(10, 20, 38, 0.8);
+            color: var(--accent-cyan);
+            font-family: var(--font-head);
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 240, 255, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: var(--font-head);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            font-family: var(--font-sub);
+            font-weight: 600;
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: 0.5s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(5, 8, 17, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-family: var(--font-sub);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            padding: 140px 8% 80px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-family: var(--font-head);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        .hero-title {
+            font-family: var(--font-head);
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            font-weight: 900;
+            background: linear-gradient(180deg, #ffffff 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-headline {
+            font-family: var(--font-sub);
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-description {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 35px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 20px;
+            border-left: 3px solid var(--accent-cyan);
+            display: inline-block;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* HERO HUD VISUAL */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hud-circle {
+            width: 380px;
+            height: 380px;
+            border: 2px dashed rgba(0, 240, 255, 0.3);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: rotateHUD 20s linear infinite;
+        }
+
+        .hud-inner-circle {
+            width: 280px;
+            height: 280px;
+            border: 2px solid rgba(168, 85, 247, 0.4);
+            border-radius: 50%;
+            position: absolute;
+            animation: rotateHUDRev 15s linear infinite;
+        }
+
+        .brain-core {
+            font-size: 6rem;
+            color: var(--accent-cyan);
+            filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.8));
+            position: absolute;
+            animation: pulseGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes rotateHUD {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateHUDRev {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        /* PROBLEM AREAS */
+        .problem-areas {
+            padding: 100px 8%;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .problem-card {
+            border-top: 3px solid transparent;
+        }
+
+        .problem-card.ai {
+            border-top-color: var(--accent-cyan);
+        }
+
+        .problem-card.ai:hover {
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .problem-card.green {
+            border-top-color: var(--accent-green);
+        }
+
+        .problem-card.green:hover {
+            box-shadow: 0 10px 30px rgba(0, 255, 102, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .problem-card.cyber {
+            border-top-color: var(--accent-purple);
+        }
+
+        .problem-card.cyber:hover {
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .problem-card.security {
+            border-top-color: var(--accent-orange);
+        }
+
+        .problem-card.security:hover {
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .problem-title {
+            font-family: var(--font-head);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .problem-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* HIGHLIGHTS SECTION */
+        .highlights {
+            padding: 60px 8%;
+            background: rgba(0, 240, 255, 0.02);
+            border-y: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 25px;
+            background: rgba(10, 18, 36, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .stat-icon {
+            font-size: 2.2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-family: var(--font-sub);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* REGISTRATION & QR SECTION */
+        .registration {
+            padding: 100px 8%;
+        }
+
+        .reg-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .qr-card-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .qr-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .qr-placeholder {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 20px;
+            background: #f0f0f0;
+            border: 3px dashed #000;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+        }
+
+        .qr-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .qr-placeholder p {
+            font-family: var(--font-head);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .qr-card-label {
+            color: #000;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* VENUE SECTION */
+        .venue {
+            padding: 80px 8%;
+        }
+
+        .venue-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .venue-info h3 {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--accent-cyan);
+        }
+
+        .venue-details {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 260px;
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px dashed var(--accent-cyan);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+        }
+
+        .map-placeholder {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .map-placeholder img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .map-placeholder:hover img {
+            transform: scale(1.03);
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+        }
+
+        /* REWARDS & RECOGNITION */
+        .rewards {
+            padding: 100px 8%;
+            text-align: center;
+        }
+
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .reward-card {
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .reward-card:hover {
+            border-color: #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .reward-icon {
+            font-size: 3.5rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+        }
+
+        .reward-title {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        /* JOURNEY & FINAL CTA */
+        .final-cta {
+            padding: 100px 8%;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 240, 255, 0.05) 100%);
+        }
+
+        .journey-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+            font-family: var(--font-head);
+            font-size: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .journey-step {
+            background: rgba(10, 20, 38, 0.8);
+            border: 1px solid var(--accent-cyan);
+            padding: 10px 20px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        .journey-arrow {
+            color: var(--text-muted);
+        }
+
+        .closing-headline {
+            font-family: var(--font-head);
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 25px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            padding: 100px 8%;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon.phone {
+            color: var(--accent-cyan);
+        }
+
+        .contact-icon.whatsapp {
+            color: var(--accent-green);
+        }
+
+        .contact-icon.instagram {
+            color: var(--accent-pink);
+        }
+
+        .contact-title {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-val {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            word-break: break-all;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.phone {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .contact-btn.whatsapp {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .contact-btn.instagram {
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+        }
+
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #02040a;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 60px 8% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            font-family: var(--font-head);
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-head);
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .footer-socials a {
+            color: var(--text-main);
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .reg-container,
+            .venue-card {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .qr-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .qr-placeholder img {
+            width: 350px;
+            height: 285px;
+            object-fit: contain;
+            display: block;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Cyber Canvas Background -->
+    <canvas id="cyber-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-microchip glow-text-cyan"></i> CHAKRAVYUH 1.0
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#problem-areas">Problem Areas</a></li>
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#register" class="btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">JOIN NOW</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-bolt"></i> 8 HRS HACKATHON</span>
+            <h1 class="hero-title">CHAKRAVYUH 1.0</h1>
+            <div class="hero-headline">Where Ideas Meet Innovation & Impact!</div>
+            <p class="hero-description">
+                An intensive 8-hour innovation challenge where participants collaborate, build innovative solutions,
+                solve real-world problems, and present their ideas before the clock runs out.
+            </p>
+            <div class="hero-tagline">
+                THINK • BUILD • SOLVE • CONQUER
+            </div>
+            <div class="hero-buttons">
+                <a href="#register" class="btn-primary">REGISTER NOW <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#problem-areas" class="btn-secondary">VIEW PROBLEM AREAS</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hud-circle">
+                <div class="hud-inner-circle"></div>
+                <i class="fa-solid fa-brain brain-core"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM AREAS -->
+    <section class="problem-areas" id="problem-areas">
+        <div class="section-header">
+            <h2 class="section-title">PROBLEM <span class="glow-text-cyan">AREAS</span></h2>
+            <p class="section-subtitle">Choose a domain, bring your ideas, and work in teams to create innovative
+                solutions.</p>
+        </div>
+        <div class="problem-grid">
+            <div class="glass-card problem-card ai">
+                <i class="fa-solid fa-robot problem-icon glow-text-cyan"></i>
+                <h3 class="problem-title">AI SOLUTIONS</h3>
+                <p class="problem-desc">Build intelligent solutions for a smarter tomorrow.</p>
+            </div>
+            <div class="glass-card problem-card green">
+                <i class="fa-solid fa-seedling problem-icon" style="color: var(--accent-green);"></i>
+                <h3 class="problem-title">SUSTAINABLE DEVELOPMENT</h3>
+                <p class="problem-desc">Innovate for a greener and healthier planet.</p>
+            </div>
+            <div class="glass-card problem-card cyber">
+                <i class="fa-solid fa-shield-halved problem-icon" style="color: var(--accent-purple);"></i>
+                <h3 class="problem-title">AI-BASED CYBERSECURITY</h3>
+                <p class="problem-desc">Strengthen digital safety with smart solutions.</p>
+            </div>
+            <div class="glass-card problem-card security">
+                <i class="fa-solid fa-lock problem-icon glow-text-orange"></i>
+                <h3 class="problem-title">SECURITY & SAFETY</h3>
+                <p class="problem-desc">Build safer communities with technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HACKATHON HIGHLIGHTS -->
+    <section class="highlights" id="highlights">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fa-solid fa-stopwatch stat-icon"></i>
+                <div class="stat-value">8 HOURS</div>
+                <div class="stat-label">Innovation & Problem-Solving</div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-users stat-icon"></i>
+                <div class="stat-value">TEAM-BASED</div>
+                <div class="stat-label">Collaborative Challenge</div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-trophy stat-icon"></i>
+                <div class="stat-value">CASH PRIZES</div>
+                <div class="stat-label">Exciting Rewards</div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-certificate stat-icon"></i>
+                <div class="stat-value">CERTIFICATES</div>
+                <div class="stat-label">Recognition for Participants</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRATION SECTION -->
+    <section class="registration" id="register">
+        <div class="glass-card reg-container">
+            <div class="reg-info">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">
+                    READY TO ENTER THE <span class="glow-text-cyan">CHAKRAVYUH?</span>
+                </h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">
+                    Scan the QR code to register directly via Google Form or click the button below to open the
+                    registration portal.
+                </p>
+                <a href="https://forms.gle/S3GWjdGTjo9q2Fyt6" target="_blank" class="btn-primary">REGISTER NOW <i
+                        class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="qr-card-wrapper">
+                <div class="qr-card">
+                    <div class="qr-placeholder">
+                        <img src="https://i.ibb.co/Gf7wNwFy/QR-Google.jpg" alt="Scan QR Code to Register">
+                    </div>
+
+                    <div class="qr-card-label">Scan to Register</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VENUE / LOCATION SECTION -->
+    <section class="venue">
+        <div class="glass-card venue-card">
+            <div class="venue-info">
+                <h3><i class="fa-solid fa-location-dot glow-text-cyan"></i> VENUE</h3>
+                <div class="venue-details">
+                    <strong
+                        style="color: #fff; font-family: var(--font-head); display: block; margin-bottom: 5px;">Bansal
+                        Campus</strong>
+                    <span style="color: var(--text-muted);">Bansal Institute of Engineering and Technology,
+                        Lucknow</span>
+                </div>
+                <a href="https://maps.app.goo.gl/cZFXyk6PZVpQQvRM8?g_st=aw" target="_blank" class="btn-secondary">GET
+                    DIRECTIONS <i class="fa-solid fa-diamond-turn-right"></i></a>
+            </div>
+            <a href="https://maps.app.goo.gl/cZFXyk6PZVpQQvRM8?g_st=aw" target="_blank" rel="noopener noreferrer"
+                class="map-placeholder">
+                <img src="https://i.ibb.co/Tx1pbMY3/456.png" alt="Google Maps Location">
+            </a>
+        </div>
+    </section>
+
+    <!-- REWARDS & RECOGNITION -->
+    <section class="rewards">
+        <div class="section-header">
+            <h2 class="section-title">REWARDS & <span class="glow-text-cyan">RECOGNITION</span></h2>
+            <p class="section-subtitle">Earn recognition, trophies, and exciting rewards for your working solutions.</p>
+        </div>
+        <div class="rewards-grid">
+            <div class="glass-card reward-card">
+                <i class="fa-solid fa-sack-dollar reward-icon"></i>
+                <h3 class="reward-title">CASH PRIZES</h3>
+            </div>
+            <div class="glass-card reward-card">
+                <i class="fa-solid fa-trophy reward-icon"></i>
+                <h3 class="reward-title">TROPHIES</h3>
+            </div>
+            <div class="glass-card reward-card">
+                <i class="fa-solid fa-award reward-icon"></i>
+                <h3 class="reward-title">CERTIFICATES</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA & JOURNEY -->
+    <section class="final-cta">
+        <div class="journey-flow">
+            <span class="journey-step">ENTER</span> <i class="fa-solid fa-chevron-right journey-arrow"></i>
+            <span class="journey-step">DISCOVER</span> <i class="fa-solid fa-chevron-right journey-arrow"></i>
+            <span class="journey-step">BUILD</span> <i class="fa-solid fa-chevron-right journey-arrow"></i>
+            <span class="journey-step">SOLVE</span> <i class="fa-solid fa-chevron-right journey-arrow"></i>
+            <span class="journey-step">PRESENT</span> <i class="fa-solid fa-chevron-right journey-arrow"></i>
+            <span class="journey-step">CONQUER</span>
+        </div>
+        <h2 class="closing-headline">
+            BRING YOUR IDEAS. BUILD YOUR SOLUTION. BREAK THE BARRIERS.
+        </h2>
+        <p style="font-family: var(--font-head); font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 30px;">
+            ARE YOU READY TO ENTER THE CHAKRAVYUH?
+        </p>
+        <a href="#register" class="btn-primary">ENTER CHAKRAVYUH 1.0 <i class="fa-solid fa-bolt"></i></a>
+    </section>
+
+    <!-- CONTACT US -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <h2 class="section-title">CONTACT <span class="glow-text-cyan">US</span></h2>
+            <p class="section-subtitle">Have questions? Connect with the CHAKRAVYUH 1.0 team.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="glass-card contact-card">
+                <i class="fa-solid fa-phone contact-icon phone"></i>
+                <h3 class="contact-title">PHONE</h3>
+                <div class="contact-val">+91 8299356981</div>
+                <a href="tel:+918299356981" class="contact-btn phone">CALL NOW →</a>
+            </div>
+            <div class="glass-card contact-card">
+                <i class="fa-brands fa-whatsapp contact-icon whatsapp"></i>
+                <h3 class="contact-title">WHATSAPP</h3>
+                <div class="contact-val">CHAKRAVYUH 1.0 Participants</div>
+                <a href=" https://chat.whatsapp.com/IvdOO61pvBT71iEzKaty35?s=cl&p=a&mlu=4&ilr=4"
+                    class="contact-btn whatsapp">CHAT ON WHATSAPP →</a>
+            </div>
+            <div class="glass-card contact-card">
+                <i class="fa-brands fa-instagram contact-icon instagram"></i>
+                <h3 class="contact-title">INSTAGRAM</h3>
+                <div class="contact-val">@cse_bansaliet</div>
+                <a href="https://www.instagram.com/cse_bansaliet?stkn=MXZla3IydGlremN3dg=="
+                    class="contact-btn instagram">FOLLOW US →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>CHAKRAVYUH 1.0</h2>
+                <p>8 HRS HACKATHON</p>
+                <p style="margin-top: 10px; font-family: var(--font-sub); font-weight: 600; color: var(--accent-cyan);">
+                    THINK • BUILD • SOLVE • CONQUER
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#problem-areas">Problem Areas</a></li>
+                    <li><a href="#highlights">Highlights</a></li>
+                    <li><a href="#register">Register</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Socials</h4>
+                <div class="footer-socials">
+                    <a href="tel:+918299356981"><i class="fa-solid fa-phone"></i></a>
+                    <a href=" https://chat.whatsapp.com/IvdOO61pvBT71iEzKaty35?s=cl&p=a&mlu=4&ilr=4"><i
+                            class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/cse_bansaliet?stkn=MXZla3IydGlremN3dg=="><i
+                            class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p style="color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Bansal Institute of
+                    Engineering and Technology, Lucknow</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 CHAKRAVYUH 1.0. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Background Particle Canvas Script -->
+    <script>
+        const canvas = document.getElementById('cyber-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = Math.random() > 0.5 ? '#00f0ff' : '#a855f7';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
+</body>
+
+</html>
