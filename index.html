@@ -46,6 +46,9 @@
             font-family: var(--font-body);
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         /* Background Particle Canvas */
@@ -912,7 +915,10 @@
             overflow-x: hidden;
         }
 
-        img, video, canvas, svg {
+        img,
+        video,
+        canvas,
+        svg {
             max-width: 100%;
         }
 
@@ -999,7 +1005,7 @@
         .reg-info,
         .qr-card-wrapper,
         .venue-info,
-        .venue-card > a {
+        .venue-card>a {
             min-width: 0;
         }
 
@@ -1213,7 +1219,7 @@
                 backdrop-filter: blur(18px);
                 border: 1px solid rgba(0, 240, 255, .2);
                 border-radius: 10px;
-                box-shadow: 0 15px 40px rgba(0,0,0,.45);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, .45);
             }
 
             nav.menu-open .nav-links {
@@ -1458,6 +1464,7 @@
 
         /* Accessibility / touch improvements */
         @media (hover: none) {
+
             .glass-card:hover,
             .problem-card.ai:hover,
             .problem-card.green:hover,
@@ -1470,6 +1477,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
@@ -1479,7 +1487,6 @@
                 transition-duration: .01ms !important;
             }
         }
-
     </style>
 </head>
 
@@ -1597,10 +1604,17 @@
                 <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">
                     READY TO ENTER THE <span class="glow-text-cyan">CHAKRAVYUH?</span>
                 </h2>
-                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 15px;">
                     Scan the QR code to register directly via Google Form or click the button below to open the
                     registration portal.
                 </p>
+
+                <!-- LAST DATE FOR REGISTRATION -->
+                <p style="color: var(--text-muted); font-weight: 600; font-size: 1rem; margin-bottom: 25px;">
+                    <i class="fa-regular fa-clock" style="color: var(--glow-cyan, #00f0ff); margin-right: 8px;"></i>
+                    Last Date to Register: <span class="glow-text-cyan">10 Oct 2026</span>
+                </p>
+
                 <a href="https://forms.gle/S3GWjdGTjo9q2Fyt6" target="_blank" class="btn-primary">REGISTER NOW <i
                         class="fa-solid fa-arrow-right"></i></a>
             </div>
@@ -1642,20 +1656,32 @@
     <section class="rewards">
         <div class="section-header">
             <h2 class="section-title">REWARDS & <span class="glow-text-cyan">RECOGNITION</span></h2>
-            <p class="section-subtitle">Earn recognition, trophies, and exciting rewards for your working solutions.</p>
+            <p class="section-subtitle">Earn recognition, trophies, and exciting rewards for your working solutions
+                across all 4 domains.</p>
         </div>
         <div class="rewards-grid">
+            <!-- Grand Cash Prize -->
             <div class="glass-card reward-card">
                 <i class="fa-solid fa-sack-dollar reward-icon"></i>
-                <h3 class="reward-title">CASH PRIZES</h3>
+                <h3 class="reward-title">GRAND CASH PRIZE</h3>
+                <p class="reward-desc">Awarded to the overall best winner selected among the 1st place winners of all 4
+                    domains.</p>
             </div>
+
+            <!-- Domain Trophies & Merit Certificates -->
             <div class="glass-card reward-card">
                 <i class="fa-solid fa-trophy reward-icon"></i>
-                <h3 class="reward-title">TROPHIES</h3>
+                <h3 class="reward-title">TROPHIES & MERIT CERTIFICATES</h3>
+                <p class="reward-desc">Trophy and Merit Certificate for Top 3 winners (1st, 2nd, and 3rd rank) in each
+                    of the 4 domains.</p>
             </div>
+
+            <!-- Participation Certificates -->
             <div class="glass-card reward-card">
                 <i class="fa-solid fa-award reward-icon"></i>
-                <h3 class="reward-title">CERTIFICATES</h3>
+                <h3 class="reward-title">PARTICIPATION CERTIFICATES</h3>
+                <p class="reward-desc">Official Certificate of Participation for every participant who submits a
+                    solution.</p>
             </div>
         </div>
     </section>
@@ -1741,8 +1767,11 @@
             </div>
             <div class="footer-col">
                 <h4>Location</h4>
-                <p style="color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Bansal Institute of
-                    Engineering and Technology, Lucknow</p>
+                <a href="https://maps.app.goo.gl/cZFXyk6PZVpQQvRM8?g_st=aw" target="_blank"
+                    style="text-decoration: none;">
+                    <p style="color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Bansal Institute of
+                        Engineering and Technology, Lucknow</p>
+                </a>
             </div>
         </div>
         <div class="footer-bottom">
