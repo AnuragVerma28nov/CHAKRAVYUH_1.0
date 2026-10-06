@@ -1,0 +1,3156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/WvMKG7nX/favion.png">
+    ```
+    <title>CHAKRAVYUH 1.0 | Our Teams</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* =========================================================
+       ROOT
+    ========================================================= */
+
+        :root {
+            --bg-dark: #050811;
+            --bg-card: rgba(10, 16, 30, 0.72);
+            --border-card: rgba(0, 240, 255, 0.18);
+
+            --accent-cyan: #00f0ff;
+            --accent-blue: #0072ff;
+            --accent-green: #00ff66;
+            --accent-purple: #a855f7;
+
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+
+            --font-head: 'Orbitron', sans-serif;
+            --font-sub: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+
+        /* =========================================================
+       RESET
+    ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+
+        /* =========================================================
+       BACKGROUND
+    ========================================================= */
+
+        #cyber-canvas {
+            position: fixed;
+            inset: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            z-index: -2;
+            pointer-events: none;
+        }
+
+
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px,
+                    transparent 1px),
+                linear-gradient(90deg,
+                    rgba(0, 240, 255, 0.03) 1px,
+                    transparent 1px);
+
+            background-size: 50px 50px;
+
+            z-index: -1;
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+       TYPOGRAPHY
+    ========================================================= */
+
+        .glow-text-cyan {
+            color: var(--accent-cyan);
+
+            text-shadow:
+                0 0 15px rgba(0, 240, 255, 0.6);
+        }
+
+
+        /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 8%;
+
+            background: rgba(5, 8, 17, 0.88);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border-bottom:
+                1px solid rgba(0, 240, 255, 0.15);
+
+            z-index: 1000;
+        }
+
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            font-weight: 900;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            letter-spacing: 2px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            white-space: nowrap;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+            color: var(--text-main);
+
+            text-decoration: none;
+
+            font-family: var(--font-sub);
+
+            font-size: 1.1rem;
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            transition: color 0.3s ease;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-cyan);
+
+            text-shadow:
+                0 0 10px var(--accent-cyan);
+        }
+
+
+        /* =========================================================
+       BUTTON
+    ========================================================= */
+
+        .btn-primary {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            background:
+                linear-gradient(135deg,
+                    var(--accent-cyan),
+                    var(--accent-blue));
+
+            color: #000;
+
+            font-family: var(--font-head);
+
+            font-weight: 700;
+
+            padding: 10px 20px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            box-shadow:
+                0 0 20px rgba(0, 240, 255, 0.4);
+
+            transition: all 0.3s ease;
+
+            white-space: nowrap;
+        }
+
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 0 35px rgba(0, 240, 255, 0.8);
+        }
+
+
+        /* =========================================================
+       MAIN
+    ========================================================= */
+
+        .page {
+            width: 84%;
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding:
+                145px 0 80px;
+        }
+
+
+        /* =========================================================
+       HEADER
+    ========================================================= */
+
+        .section-header {
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+
+        .hero-badge {
+            display: inline-block;
+
+            background:
+                rgba(0, 240, 255, 0.1);
+
+            border:
+                1px solid var(--accent-cyan);
+
+            color:
+                var(--accent-cyan);
+
+            font-family:
+                var(--font-head);
+
+            padding:
+                6px 16px;
+
+            border-radius:
+                20px;
+
+            font-size:
+                0.85rem;
+
+            margin-bottom:
+                20px;
+
+            letter-spacing:
+                2px;
+
+            box-shadow:
+                0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+
+        .section-title {
+            font-family: var(--font-head);
+
+            font-size:
+                clamp(2rem, 5vw, 3rem);
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-subtitle {
+            color: var(--text-muted);
+
+            font-size: 1.1rem;
+
+            max-width: 700px;
+
+            margin: 0 auto;
+
+            font-family: var(--font-sub);
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+       TEAM GRID
+    ========================================================= */
+
+        #teamGrid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* =========================================================
+       GLASS CARD
+    ========================================================= */
+
+        .glass-card {
+            background:
+                var(--bg-card);
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
+
+            border:
+                1px solid var(--border-card);
+
+            border-radius:
+                12px;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+        }
+
+
+        /* =========================================================
+       TEAM CARD
+    ========================================================= */
+
+        .team-card {
+            padding: 28px;
+
+            border-top:
+                3px solid var(--accent-cyan);
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+
+            outline: none;
+        }
+
+
+        .team-card::before {
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+            left: -100%;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.05),
+                    transparent);
+
+            transition: 0.5s;
+
+            pointer-events: none;
+        }
+
+
+        .team-card:hover::before {
+            left: 100%;
+        }
+
+
+        .team-card:hover {
+            transform: translateY(-7px);
+
+            border-color:
+                rgba(0, 240, 255, 0.55);
+
+            box-shadow:
+                0 12px 35px rgba(0, 240, 255, 0.16);
+        }
+
+
+        .team-card:active {
+            transform: scale(0.985);
+        }
+
+
+        .team-card.featured {
+            border-color:
+                var(--accent-cyan);
+
+            box-shadow:
+                0 0 25px rgba(0, 240, 255, 0.18);
+        }
+
+
+        /* =========================================================
+       TEAM HEADER
+    ========================================================= */
+
+        .team-top {
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .team-category {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: var(--accent-cyan);
+
+            border:
+                1px solid rgba(0, 240, 255, 0.3);
+
+            background:
+                rgba(0, 240, 255, 0.08);
+
+            border-radius: 20px;
+
+            padding: 5px 10px;
+
+            font-family: var(--font-head);
+
+            font-size: 0.62rem;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        .team-icon {
+            font-size: 1.5rem;
+
+            color:
+                var(--accent-cyan);
+
+            filter:
+                drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
+        }
+
+
+        .team-name {
+            font-family:
+                var(--font-head);
+
+            font-size: 1.3rem;
+
+            color: #fff;
+
+            margin-bottom: 5px;
+        }
+
+
+        .team-count {
+            color:
+                var(--text-muted);
+
+            font-family:
+                var(--font-sub);
+
+            font-weight: 600;
+
+            font-size: 0.95rem;
+
+            margin-bottom: 15px;
+        }
+
+
+        .team-bio {
+            color:
+                var(--text-muted);
+
+            font-size: 0.9rem;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =========================================================
+       MEMBERS PREVIEW
+    ========================================================= */
+
+        .member-group {
+            margin-bottom: 17px;
+        }
+
+
+        .member-label {
+            font-family:
+                var(--font-sub);
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .member-label.mentor {
+            color: var(--accent-cyan);
+        }
+
+
+        .member-label.volunteer {
+            color: var(--accent-green);
+        }
+
+
+        .member-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .member {
+            padding: 6px 9px;
+
+            border-radius: 5px;
+
+            background:
+                rgba(10, 20, 38, 0.8);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.07);
+
+            color:
+                #d8dee9;
+
+            font-size:
+                0.78rem;
+        }
+
+
+        /* =========================================================
+       CLICK HINT
+    ========================================================= */
+
+        .team-click-hint {
+            margin-top: 18px;
+
+            padding-top: 14px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.07);
+
+            color:
+                rgba(0, 240, 255, 0.75);
+
+            font-family:
+                var(--font-sub);
+
+            font-size:
+                0.8rem;
+
+            font-weight:
+                600;
+
+            text-align:
+                right;
+        }
+
+
+        /* =========================================================
+       MODAL
+    ========================================================= */
+
+        .team-modal {
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0, 0, 0, 0.78);
+
+            backdrop-filter:
+                blur(10px);
+
+            -webkit-backdrop-filter:
+                blur(10px);
+
+            z-index: 2000;
+        }
+
+
+        .team-modal.show {
+            display: flex;
+        }
+
+
+        .team-modal-content {
+            position: relative;
+
+            width: 100%;
+
+            max-width: 850px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            padding: 38px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(10, 20, 38, 0.98),
+                    rgba(5, 8, 17, 0.98));
+
+            border:
+                1px solid rgba(0, 240, 255, 0.35);
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 0 50px rgba(0, 240, 255, 0.2),
+
+                inset 0 0 30px rgba(0, 240, 255, 0.03);
+
+            animation:
+                modalOpen 0.25s ease;
+        }
+
+
+        @keyframes modalOpen {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(25px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0) scale(1);
+            }
+        }
+
+
+        /* =========================================================
+       MODAL CLOSE
+    ========================================================= */
+
+        .modal-close {
+            position: absolute;
+
+            top: 18px;
+            right: 20px;
+
+            width: 38px;
+            height: 38px;
+
+            border:
+                1px solid rgba(0, 240, 255, 0.25);
+
+            border-radius: 50%;
+
+            background:
+                rgba(0, 240, 255, 0.08);
+
+            color:
+                var(--accent-cyan);
+
+            font-size:
+                1.1rem;
+
+            cursor: pointer;
+
+            transition:
+                0.25s;
+
+            z-index: 5;
+        }
+
+
+        .modal-close:hover {
+            background:
+                var(--accent-cyan);
+
+            color: #000;
+
+            box-shadow:
+                0 0 20px rgba(0, 240, 255, 0.5);
+        }
+
+
+        /* =========================================================
+       MODAL HEADER
+    ========================================================= */
+
+        .modal-category {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 6px 12px;
+
+            margin-bottom: 15px;
+
+            border:
+                1px solid rgba(0, 240, 255, 0.3);
+
+            border-radius: 20px;
+
+            background:
+                rgba(0, 240, 255, 0.08);
+
+            color:
+                var(--accent-cyan);
+
+            font-family:
+                var(--font-head);
+
+            font-size:
+                0.7rem;
+
+            letter-spacing:
+                1px;
+        }
+
+
+        .modal-title {
+            font-family:
+                var(--font-head);
+
+            font-size:
+                2rem;
+
+            color: #fff;
+
+            margin-bottom:
+                10px;
+
+            padding-right:
+                45px;
+        }
+
+
+        .modal-bio {
+            color:
+                var(--text-muted);
+
+            margin-bottom:
+                30px;
+        }
+
+
+        /* =========================================================
+       MODAL MEMBER SECTIONS
+    ========================================================= */
+
+        .modal-section {
+            margin-top:
+                28px;
+        }
+
+
+        .modal-section-title {
+            font-family:
+                var(--font-sub);
+
+            font-size:
+                1.1rem;
+
+            font-weight:
+                700;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .modal-section-title.mentor {
+            color:
+                var(--accent-cyan);
+        }
+
+
+        .modal-section-title.volunteer {
+            color:
+                var(--accent-green);
+        }
+
+
+        /* =========================================================
+       MEMBER PHOTO GRID
+    ========================================================= */
+
+        .photo-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .person-card {
+            background:
+                rgba(10, 20, 38, 0.9);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius:
+                10px;
+
+            padding:
+                12px;
+
+            text-align:
+                center;
+
+            transition:
+                0.25s;
+
+            overflow:
+                hidden;
+        }
+
+
+        .person-card:hover {
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(0, 240, 255, 0.4);
+
+            box-shadow:
+                0 8px 25px rgba(0, 240, 255, 0.12);
+        }
+
+
+        .person-photo {
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            object-fit: cover;
+
+            border-radius:
+                8px;
+
+            display:
+                block;
+
+            margin-bottom:
+                10px;
+
+            border:
+                1px solid rgba(0, 240, 255, 0.18);
+
+            background:
+                rgba(0, 240, 255, 0.04);
+        }
+
+
+        .person-name {
+            color:
+                #fff;
+
+            font-family:
+                var(--font-sub);
+
+            font-size:
+                0.9rem;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.25;
+        }
+
+
+        .person-role {
+            margin-top:
+                3px;
+
+            font-size:
+                0.7rem;
+
+            color:
+                var(--text-muted);
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                0.7px;
+        }
+
+
+        /* =========================================================
+       NO RESULTS
+    ========================================================= */
+
+        #noResults {
+            display: none;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            color:
+                var(--text-muted);
+
+            margin-top:
+                25px;
+        }
+
+
+        #noResults i {
+            font-size:
+                2.5rem;
+
+            color:
+                rgba(0, 240, 255, 0.5);
+
+            margin-bottom:
+                15px;
+        }
+
+
+        #noResults h3 {
+            font-family:
+                var(--font-head);
+
+            color:
+                #fff;
+
+            margin-bottom:
+                5px;
+        }
+
+        /* =========================================================
+       TABLET
+    ========================================================= */
+
+        @media (max-width: 1100px) {
+
+            #teamGrid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .photo-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* =========================================================
+       TABLET / SMALL LAPTOP
+    ========================================================= */
+
+        @media (max-width: 992px) {
+
+            nav {
+                padding:
+                    18px 5%;
+            }
+
+
+            .nav-links {
+                gap:
+                    15px;
+            }
+
+
+            .nav-links a {
+                font-size:
+                    0.95rem;
+            }
+
+
+            .page {
+                width:
+                    90%;
+            }
+
+        }
+
+
+        /* =========================================================
+       MOBILE
+    ========================================================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding:
+                    16px 5%;
+            }
+
+
+            .logo {
+                font-size:
+                    1.15rem;
+
+                letter-spacing:
+                    1px;
+            }
+
+
+            .nav-links,
+            nav>.btn-primary {
+                display:
+                    none;
+            }
+
+
+            .page {
+                width:
+                    90%;
+
+                padding-top:
+                    115px;
+            }
+
+
+            #teamGrid {
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    20px;
+            }
+
+
+            .section-header {
+                margin-bottom:
+                    35px;
+            }
+
+
+            .section-title {
+                font-size:
+                    2rem;
+            }
+
+
+            .section-subtitle {
+                font-size:
+                    1rem;
+            }
+
+
+            .team-card {
+                padding:
+                    22px;
+            }
+
+
+            .team-modal {
+                padding:
+                    12px;
+            }
+
+
+            .team-modal-content {
+                padding:
+                    28px 20px;
+
+                max-height:
+                    92vh;
+            }
+
+
+            .modal-title {
+                font-size:
+                    1.5rem;
+            }
+
+
+            .photo-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap:
+                    12px;
+            }
+
+        }
+
+
+        /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size:
+                    1rem;
+            }
+
+
+            .section-title {
+                font-size:
+                    1.7rem;
+            }
+
+
+            .section-subtitle {
+                font-size:
+                    0.9rem;
+            }
+
+
+            .team-card {
+                padding:
+                    20px;
+            }
+
+
+            .team-name {
+                font-size:
+                    1.1rem;
+            }
+
+
+            .team-category {
+                font-size:
+                    0.55rem;
+
+                padding:
+                    5px 8px;
+            }
+
+
+            .team-icon {
+                font-size:
+                    1.25rem;
+            }
+
+
+            .team-click-hint {
+                font-size:
+                    0.72rem;
+            }
+
+
+            .team-modal-content {
+                padding:
+                    25px 16px;
+            }
+
+
+            .modal-title {
+                font-size:
+                    1.25rem;
+            }
+
+
+            .photo-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .person-card {
+                padding:
+                    8px;
+            }
+
+
+            .person-name {
+                font-size:
+                    0.78rem;
+            }
+
+
+            .person-role {
+                font-size:
+                    0.6rem;
+            }
+
+        }
+
+        /* =========================================================
+   CHAKRAVYUH 1.0 — FOOTER
+   Fully Responsive: Desktop / Tablet / Mobile
+   ========================================================= */
+
+        footer {
+            position: relative;
+            width: 100%;
+            background:
+                linear-gradient(180deg,
+                    rgba(0, 240, 255, 0.025) 0%,
+                    rgba(2, 4, 10, 0.98) 35%,
+                    #02040a 100%);
+            border-top: 1px solid rgba(0, 240, 255, 0.18);
+            padding: 70px clamp(16px, 5vw, 120px) 30px;
+            overflow: hidden;
+        }
+
+        /* Neon top line */
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent,
+                    var(--accent-cyan),
+                    var(--accent-purple),
+                    var(--accent-cyan),
+                    transparent);
+            box-shadow:
+                0 0 12px rgba(0, 240, 255, 0.6),
+                0 0 25px rgba(168, 85, 247, 0.25);
+        }
+
+        /* Subtle footer glow */
+        footer::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 180px;
+            left: 50%;
+            bottom: -150px;
+            transform: translateX(-50%);
+            background: rgba(0, 240, 255, 0.08);
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        /* FOOTER GRID */
+        .footer-grid {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto 50px;
+
+            display: grid;
+            grid-template-columns:
+                minmax(240px, 2fr) minmax(150px, 1fr) minmax(150px, 1fr) minmax(240px, 1.5fr);
+
+            gap: clamp(30px, 5vw, 70px);
+        }
+
+        /* FOOTER BRAND */
+        .footer-brand {
+            min-width: 0;
+        }
+
+        .footer-brand h2 {
+            font-family: var(--font-head);
+            font-size: clamp(1.35rem, 2.5vw, 2rem);
+            font-weight: 900;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+
+            text-shadow:
+                0 0 10px rgba(0, 240, 255, 0.5),
+                0 0 25px rgba(0, 240, 255, 0.2);
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Tagline */
+        .footer-brand p:last-child {
+            margin-top: 12px;
+            font-family: var(--font-sub);
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        /* FOOTER COLUMNS */
+        .footer-col {
+            min-width: 0;
+        }
+
+        .footer-col h4 {
+            position: relative;
+
+            font-family: var(--font-head);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Heading underline */
+        .footer-col h4::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            width: 35px;
+            height: 2px;
+
+            background: var(--accent-cyan);
+            box-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        /* QUICK LINKS */
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 11px;
+        }
+
+        .footer-col ul li a {
+            position: relative;
+
+            display: inline-block;
+
+            color: var(--text-muted);
+            text-decoration: none;
+
+            font-family: var(--font-sub);
+            font-size: 1rem;
+            font-weight: 600;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .footer-col ul li a::before {
+            content: "›";
+            display: inline-block;
+
+            color: var(--accent-cyan);
+            margin-right: 7px;
+
+            opacity: 0;
+            transform: translateX(-5px);
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-cyan);
+            transform: translateX(4px);
+
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+        }
+
+        .footer-col ul li a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* SOCIAL ICONS */
+        .footer-socials {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .footer-socials a {
+            width: 42px;
+            height: 42px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--text-muted);
+
+            background: rgba(0, 240, 255, 0.04);
+            border: 1px solid rgba(0, 240, 255, 0.18);
+            border-radius: 8px;
+
+            font-size: 1.1rem;
+            text-decoration: none;
+
+            transition:
+                all 0.3s ease;
+        }
+
+        /* Phone */
+        .footer-socials a:nth-child(1):hover {
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+
+            background: rgba(0, 240, 255, 0.1);
+
+            box-shadow:
+                0 0 10px rgba(0, 240, 255, 0.3),
+                inset 0 0 10px rgba(0, 240, 255, 0.05);
+
+            transform: translateY(-4px);
+        }
+
+        /* WhatsApp */
+        .footer-socials a:nth-child(2):hover {
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+
+            background: rgba(0, 255, 102, 0.08);
+
+            box-shadow:
+                0 0 10px rgba(0, 255, 102, 0.3),
+                inset 0 0 10px rgba(0, 255, 102, 0.05);
+
+            transform: translateY(-4px);
+        }
+
+        /* Instagram */
+        .footer-socials a:nth-child(3):hover {
+            color: var(--accent-pink);
+            border-color: var(--accent-pink);
+
+            background: rgba(255, 0, 127, 0.08);
+
+            box-shadow:
+                0 0 10px rgba(255, 0, 127, 0.3),
+                inset 0 0 10px rgba(255, 0, 127, 0.05);
+
+            transform: translateY(-4px);
+        }
+
+        /* LOCATION */
+        .footer-col>a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+
+            max-width: 300px;
+        }
+
+        .footer-col>a p {
+            margin: 0;
+
+            color: var(--text-muted) !important;
+
+            font-family: var(--font-sub);
+            font-size: 0.98rem;
+            font-weight: 600;
+
+            line-height: 1.7;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .footer-col>a p i {
+            color: var(--accent-cyan);
+            margin-right: 7px;
+
+            transition:
+                transform 0.3s ease,
+                text-shadow 0.3s ease;
+        }
+
+        .footer-col>a:hover p {
+            color: #fff !important;
+            transform: translateX(3px);
+        }
+
+        .footer-col>a:hover p i {
+            transform: scale(1.15);
+
+            text-shadow:
+                0 0 8px var(--accent-cyan),
+                0 0 15px rgba(0, 240, 255, 0.5);
+        }
+
+        /* FOOTER BOTTOM */
+        .footer-bottom {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+
+            padding-top: 25px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+            text-align: center;
+
+            color: var(--text-muted);
+
+            font-family: var(--font-sub);
+            font-size: 0.9rem;
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer bottom cyan glow */
+        .footer-bottom::before {
+            content: "◆";
+            color: var(--accent-cyan);
+            margin-right: 8px;
+
+            font-size: 0.55rem;
+            vertical-align: middle;
+
+            text-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        .footer-bottom::after {
+            content: "◆";
+            color: var(--accent-cyan);
+            margin-left: 8px;
+
+            font-size: 0.55rem;
+            vertical-align: middle;
+
+            text-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+
+        /* =========================================================
+   FOOTER RESPONSIVE
+   ========================================================= */
+
+        /* Large tablets / small laptops */
+        @media (max-width: 1100px) {
+
+            footer {
+                padding-left: clamp(24px, 5vw, 70px);
+                padding-right: clamp(24px, 5vw, 70px);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1.5fr 1fr 1fr;
+                gap: 35px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+
+        /* Tablets */
+        @media (max-width: 850px) {
+
+            footer {
+                padding-top: 55px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 35px 30px;
+                margin-bottom: 40px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .footer-brand h2 {
+                font-size: 1.6rem;
+            }
+
+            .footer-col h4 {
+                margin-bottom: 16px;
+            }
+        }
+
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            footer {
+                padding:
+                    45px 18px 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+
+                margin-bottom: 35px;
+            }
+
+            .footer-brand {
+                grid-column: auto;
+                text-align: center;
+            }
+
+            .footer-brand h2 {
+                font-size: 1.35rem;
+                letter-spacing: 1.5px;
+            }
+
+            .footer-brand p {
+                font-size: 0.88rem;
+            }
+
+            .footer-brand p:last-child {
+                font-size: 0.78rem;
+                letter-spacing: 1px;
+            }
+
+            .footer-col {
+                text-align: center;
+            }
+
+            .footer-col h4 {
+                font-size: 0.9rem;
+                margin-bottom: 17px;
+            }
+
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-col ul li {
+                margin-bottom: 9px;
+            }
+
+            .footer-col ul li a {
+                font-size: 0.92rem;
+            }
+
+            .footer-col ul li a:hover {
+                transform: none;
+            }
+
+            .footer-socials {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .footer-socials a {
+                width: 44px;
+                height: 44px;
+            }
+
+            .footer-col>a {
+                max-width: 340px;
+                margin: 0 auto;
+            }
+
+            .footer-col>a p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .footer-col>a:hover p {
+                transform: none;
+            }
+
+            .footer-bottom {
+                padding-top: 20px;
+                font-size: 0.78rem;
+                line-height: 1.6;
+            }
+        }
+
+
+        /* Very small phones */
+        @media (max-width: 380px) {
+
+            footer {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            .footer-brand h2 {
+                font-size: 1.15rem;
+            }
+
+            .footer-brand p:last-child {
+                font-size: 0.68rem;
+            }
+
+            .footer-socials a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.72rem;
+            }
+        }
+
+
+        /* Touch devices */
+        @media (hover: none) {
+
+            .footer-socials a:hover {
+                transform: none;
+            }
+
+            .footer-col ul li a:hover {
+                transform: none;
+            }
+
+            .footer-col>a:hover p {
+                transform: none;
+            }
+        }
+
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+
+            .footer-socials a,
+            .footer-col ul li a,
+            .footer-col>a p,
+            .footer-socials a i {
+                transition: none !important;
+            }
+        }
+    </style>
+    ```
+
+</head>
+
+<body>
+
+    ```
+    <!-- =========================================================
+     BACKGROUND
+========================================================= -->
+
+    <canvas id="cyber-canvas"></canvas>
+
+    <div class="grid-overlay"></div>
+
+
+    <!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+
+            <i class="fa-solid fa-microchip glow-text-cyan"></i>
+
+            CHAKRAVYUH 1.0
+
+        </a>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html#home">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#problem-areas">
+                    Problem Areas
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#highlights">
+                    Highlights
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#register">
+                    Register
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#contact">
+                    Contact
+                </a>
+            </li>
+
+            <li>
+                <a href="#team" class="active">
+                    Our Team
+                </a>
+            </li>
+
+        </ul>
+
+
+        <a href="index.html#register" class="btn-primary">
+            JOIN NOW
+        </a>
+
+    </nav>
+
+
+    <!-- =========================================================
+     MAIN
+========================================================= -->
+
+    <main class="page" id="team">
+
+
+        <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
+        <header class="section-header">
+
+            <h1 class="section-title">
+
+                OUR
+
+                <span class="glow-text-cyan">
+                    TEAMS
+                </span>
+
+            </h1>
+
+
+            <p class="section-subtitle">
+
+                Meet the teams working together to
+
+                <span class="glow-text-cyan">
+                    THINK
+                </span>
+
+                • BUILD • SOLVE • CONQUER
+
+            </p>
+
+        </header>
+
+
+        <!-- =====================================================
+         TEAM GRID
+    ===================================================== -->
+
+        <section id="teamGrid"></section>
+
+
+        <!-- =====================================================
+         NO RESULTS
+    ===================================================== -->
+
+        <div id="noResults" class="glass-card">
+
+            <i class="fa-solid fa-users-slash"></i>
+
+            <h3>
+                NO TEAMS FOUND
+            </h3>
+
+            <p>
+                No team information is available.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+     TEAM DETAILS MODAL
+========================================================= -->
+
+    <div class="team-modal" id="teamModal" role="dialog" aria-modal="true" aria-hidden="true">
+
+        <div class="team-modal-content">
+
+            <button class="modal-close" id="modalClose" aria-label="Close team details">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div id="modalTeamContent"></div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>CHAKRAVYUH 1.0</h2>
+                <p>8 HRS HACKATHON</p>
+                <p style="margin-top: 10px; font-family: var(--font-sub); font-weight: 600; color: var(--accent-cyan);">
+                    THINK • BUILD • SOLVE • CONQUER
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li>
+                        <a href="index.html#home">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#problem-areas">
+                            Problem Areas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#highlights">
+                            Highlights
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#register">
+                            Register
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#contact">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#team" class="active">
+                            Our Team
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Socials</h4>
+                <div class="footer-socials">
+                    <a href="tel:+918299356981"><i class="fa-solid fa-phone"></i></a>
+                    <a href=" https://chat.whatsapp.com/IvdOO61pvBT71iEzKaty35?s=cl&p=a&mlu=4&ilr=4"><i
+                            class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/cse_bansaliet?stkn=MXZla3IydGlremN3dg=="><i
+                            class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <a href="https://maps.app.goo.gl/cZFXyk6PZVpQQvRM8?g_st=aw" target="_blank"
+                    style="text-decoration: none;">
+                    <p style="color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Bansal Institute of
+                        Engineering and Technology, Lucknow</p>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 CHAKRAVYUH 1.0. All Rights Reserved.
+        </div>
+    </footer>
+
+
+    <!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+    <script>
+
+        /* =========================================================
+           TEAM DATA
+    
+           IMPORTANT:
+           Replace the photo URLs with your actual image links.
+    
+           Example:
+    
+           photo: "https://example.com/anurag.jpg"
+    
+           You can also use local images:
+    
+           photo: "images/anurag.jpg"
+        ========================================================= */
+
+
+        const TEAMS_DATA = [
+
+            {
+                id: "core-management",
+
+                name: "Core Management",
+
+                category: "CORE MANAGEMENT",
+
+                isFeatured: false,
+
+                icon: "fa-crown",
+
+                bio:
+                    "Overseeing end-to-end hackathon execution, operational strategy, venue setup, and partner relations.",
+
+                mentors: [
+
+                    {
+                        name: "Aditya Gupta",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Aditya"
+                    },
+
+                    {
+                        name: "Anurag Verma",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Anurag"
+                    },
+                    {
+                        name: "Ayush Saxena",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Ayush"
+                    }, {
+                        name: "Prateek Awasthi",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Prateek"
+                    }
+
+                ],
+
+                volunteers: [
+
+                    {
+                        name: "Ananya Mishra",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Ananya"
+                    },
+
+                    {
+                        name: "Palak Tripathi",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Palak"
+                    }
+
+                ]
+            },
+
+
+            {
+                id: "tech-team",
+
+                name: "Tech & Innovation",
+
+                category: "TECH",
+
+                isFeatured: true,
+
+                icon: "fa-code",
+
+                bio:
+                    "Architecting web platforms, evaluation portals, network infrastructure, and automated grading bots.",
+
+                mentors: [
+
+                    {
+                        name: "Prince Yadav",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Prince"
+                    },
+
+                    {
+                        name: "Pranjal Shukla",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Pranjal"
+                    },
+
+                    {
+                        name: "Varun Sharma",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Varun"
+                    },
+
+                    {
+                        name: "Kumar Utkarsh",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Utkarsh"
+                    }
+
+                ],
+
+                volunteers: [
+
+                    {
+                        name: "Vivek Dhangar",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Vivek"
+                    },
+
+                    {
+                        name: "Arya Mishra",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Arya"
+                    }
+
+                ]
+            },
+
+
+            {
+                id: "finance-team",
+
+                name: "Finance & Treasury",
+
+                category: "FINANCE",
+
+                isFeatured: false,
+
+                icon: "fa-wallet",
+
+                bio:
+                    "Managing hackathon budget allocations, sponsor disbursements, prize distributions, and logistics accounts.",
+
+                mentors: [
+
+                    {
+                        name: "Aditya Gupta",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Aditya"
+                    },
+
+                    {
+                        name: "Kartikey Gupta",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Kartikey"
+                    }
+
+                ],
+
+                volunteers: [
+
+                    {
+                        name: "Anita Mishra",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Anita"
+                    }
+
+                ]
+            },
+
+
+            {
+                id: "discipline-team",
+
+                name: "Discipline & Protocol",
+
+                category: "DISCIPLINE",
+
+                isFeatured: false,
+
+                icon: "fa-shield-halved",
+
+                bio:
+                    "Ensuring event code of conduct compliance, overnight venue security, and smooth participant workflow.",
+
+                mentors: [
+
+                    {
+                        name: "Kapil Singh Maan",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Kapil"
+                    },
+
+                    {
+                        name: "Nikhil Rai",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Nikhil"
+                    },
+
+                    {
+                        name: "Saurabh Pandey",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Saurabh"
+                    }
+
+                ],
+
+                volunteers: [
+
+                    {
+                        name: "Diptii",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Diptii"
+                    }
+
+                ]
+            },
+
+            {
+                id: "social-media-team",
+
+                name: "Social Media & Branding",
+
+                category: "SOCIAL MEDIA",
+
+                isFeatured: false,
+
+                icon: "fa-share-nodes",
+
+                bio:
+                    "Driving global outreach, content creation, live streaming coverage, and public relation campaigns.",
+
+                mentors: [
+
+                    {
+                        name: "Estuti Singh",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Estuti"
+                    },
+
+                    {
+                        name: "Sonam Yadav",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Sonam"
+                    },
+
+                    {
+                        name: "Falak Ansari",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Falak"
+                    }
+
+                ],
+
+                volunteers: [
+
+                    {
+                        name: "Rehan",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Rehan"
+                    },
+
+                    {
+                        name: "Naman Vishwakarma",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Naman"
+                    }
+
+                ]
+            },
+
+
+            {
+                id: "help-support-team",
+
+                name: "Help & Support",
+
+                category: "HELP & SUPPORT",
+
+                isFeatured: false,
+
+                icon: "fa-headset",
+
+                bio:
+                    "Providing round-the-clock participant assistance, mentor pairing, venue guidance, and emergency support.",
+
+                mentors: [
+
+                    {
+                        name: "Adarsh Gupta",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Adarsh"
+                    },
+
+                    {
+                        name: "Pranjal Shukla",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Pranjal"
+                    },
+
+                    {
+                        name: "Vaibhav Pandey",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Vaibhav"
+                    }
+
+                ],
+
+                volunteers: [
+
+                    {
+                        name: "Prasoon Shukla",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Prasoon"
+                    },
+
+                    {
+                        name: "Priyanshu Singh",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Priyanshu"
+                    }
+
+                ]
+            },
+
+
+            {
+                id: "documentation-team",
+
+                name: "Documentation Team",
+
+                category: "DOCUMENTATION",
+
+                isFeatured: false,
+
+                icon: "fa-file-lines",
+
+                bio:
+                    "Managing event documentation, technical guides, reports, schedules, certificates, and maintaining organized records throughout the hackathon.",
+
+                mentors: [
+
+                    {
+                        name: "Anurag Verma",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Anurag"
+                    },
+
+                    {
+                        name: "Aditya Gupta",
+                        photo: "https://placehold.co/500x500/07121f/00f0ff?text=Aditya"
+                    }
+
+                ],
+
+                volunteers: [
+
+                    {
+                        name: "Ananya Mishra",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Ananya"
+                    },
+
+                    {
+                        name: "Palak Tripathi",
+                        photo: "https://placehold.co/500x500/07121f/00ff66?text=Palak"
+                    }
+
+                ]
+            }
+
+        ];
+
+
+        /* =========================================================
+           ELEMENTS
+        ========================================================= */
+
+        const teamGrid =
+            document.getElementById("teamGrid");
+
+
+        const noResults =
+            document.getElementById("noResults");
+
+
+        const teamModal =
+            document.getElementById("teamModal");
+
+
+        const modalTeamContent =
+            document.getElementById("modalTeamContent");
+
+
+        const modalClose =
+            document.getElementById("modalClose");
+
+
+        /* =========================================================
+           CREATE PERSON CARD
+        ========================================================= */
+
+        function createPersonCard(person, role) {
+
+            return `
+
+            <div class="person-card">
+
+                <img
+                    class="person-photo"
+                    src="${person.photo}"
+                    alt="${person.name}"
+                    loading="lazy"
+                    onerror="
+                        this.src='https://placehold.co/500x500/07121f/00f0ff?text=Photo';
+                    "
+                >
+
+                <div class="person-name">
+                    ${person.name}
+                </div>
+
+                <div class="person-role">
+                    ${role}
+                </div>
+
+            </div>
+
+        `;
+        }
+
+
+        /* =========================================================
+           CREATE TEAM CARD
+        ========================================================= */
+
+        function createTeamCard(team) {
+
+            const card =
+                document.createElement("article");
+
+
+            card.className =
+                `glass-card team-card ${team.isFeatured
+                    ? "featured"
+                    : ""
+                }`;
+
+
+            card.dataset.teamId =
+                team.id;
+
+
+            card.setAttribute(
+                "role",
+                "button"
+            );
+
+
+            card.setAttribute(
+                "tabindex",
+                "0"
+            );
+
+
+            card.setAttribute(
+                "aria-label",
+                `Open ${team.name}`
+            );
+
+
+            card.innerHTML = `
+
+            <div class="team-top">
+
+                <span class="team-category">
+
+                    <i class="fa-solid ${team.icon}"></i>
+
+                    ${team.category}
+
+                </span>
+
+
+                <i
+                    class="fa-solid ${team.icon} team-icon"
+                ></i>
+
+            </div>
+
+
+            <h2 class="team-name">
+                ${team.name}
+            </h2>
+
+
+            <div class="team-count">
+
+                ${team.mentors.length}
+                Mentor${team.mentors.length !== 1 ? "s" : ""}
+
+                •
+
+                ${team.volunteers.length}
+                Volunteer${team.volunteers.length !== 1 ? "s" : ""}
+
+            </div>
+
+
+            <p class="team-bio">
+                ${team.bio}
+            </p>
+
+
+            <div class="member-group">
+
+                <div class="member-label mentor">
+
+                    <i class="fa-solid fa-user-tie"></i>
+
+                    Mentors
+
+                </div>
+
+
+                <div class="member-list">
+
+                    ${team.mentors
+                    .map(person => `
+                            <span class="member">
+                                ${person.name}
+                            </span>
+                        `)
+                    .join("")
+                }
+
+                </div>
+
+            </div>
+
+
+            <div class="member-group">
+
+                <div class="member-label volunteer">
+
+                    <i class="fa-solid fa-handshake-angle"></i>
+
+                    Volunteers
+
+                </div>
+
+
+                <div class="member-list">
+
+                    ${team.volunteers
+                    .map(person => `
+                            <span class="member">
+                                ${person.name}
+                            </span>
+                        `)
+                    .join("")
+                }
+
+                </div>
+
+            </div>
+
+
+            <div class="team-click-hint">
+
+                VIEW TEAM MEMBERS
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        `;
+
+
+            return card;
+        }
+
+
+        /* =========================================================
+           RENDER TEAMS
+        ========================================================= */
+
+        function renderTeams() {
+
+            teamGrid.innerHTML = "";
+
+
+            if (!TEAMS_DATA.length) {
+
+                noResults.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            noResults.style.display =
+                "none";
+
+
+            TEAMS_DATA.forEach(team => {
+
+                teamGrid.appendChild(
+                    createTeamCard(team)
+                );
+
+            });
+
+        }
+
+
+        /* =========================================================
+           OPEN TEAM MODAL
+        ========================================================= */
+
+        function openTeamDetails(teamId) {
+
+            const team =
+                TEAMS_DATA.find(
+                    item =>
+                        item.id === teamId
+                );
+
+
+            if (!team) return;
+
+
+            const mentorsHTML =
+                team.mentors
+                    .map(
+                        person =>
+                            createPersonCard(
+                                person,
+                                "Mentor"
+                            )
+                    )
+                    .join("");
+
+
+            const volunteersHTML =
+                team.volunteers
+                    .map(
+                        person =>
+                            createPersonCard(
+                                person,
+                                "Volunteer"
+                            )
+                    )
+                    .join("");
+
+
+            modalTeamContent.innerHTML = `
+
+            <div class="modal-category">
+
+                <i class="fa-solid ${team.icon}"></i>
+
+                ${team.category}
+
+            </div>
+
+
+            <h2 class="modal-title">
+                ${team.name}
+            </h2>
+
+
+            <p class="modal-bio">
+                ${team.bio}
+            </p>
+
+
+            <!-- MENTORS -->
+
+            <div class="modal-section">
+
+                <div class="modal-section-title mentor">
+
+                    <i class="fa-solid fa-user-tie"></i>
+
+                    Mentors
+
+                </div>
+
+
+                <div class="photo-grid">
+
+                    ${mentorsHTML}
+
+                </div>
+
+            </div>
+
+
+            <!-- VOLUNTEERS -->
+
+            <div class="modal-section">
+
+                <div class="modal-section-title volunteer">
+
+                    <i class="fa-solid fa-handshake-angle"></i>
+
+                    Volunteers
+
+                </div>
+
+
+                <div class="photo-grid">
+
+                    ${volunteersHTML}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+            teamModal.classList.add("show");
+
+            teamModal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.classList.add(
+                "modal-open"
+            );
+
+
+            modalClose.focus();
+
+        }
+
+
+        /* =========================================================
+           CLOSE MODAL
+        ========================================================= */
+
+        function closeTeamDetails() {
+
+            teamModal.classList.remove(
+                "show"
+            );
+
+
+            teamModal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
+
+
+        /* =========================================================
+           CARD CLICK
+        ========================================================= */
+
+        teamGrid.addEventListener(
+            "click",
+            event => {
+
+                const card =
+                    event.target.closest(
+                        ".team-card"
+                    );
+
+
+                if (!card) return;
+
+
+                openTeamDetails(
+                    card.dataset.teamId
+                );
+
+            }
+        );
+
+
+        /* =========================================================
+           CARD KEYBOARD SUPPORT
+        ========================================================= */
+
+        teamGrid.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key !== "Enter" &&
+                    event.key !== " "
+                ) {
+                    return;
+                }
+
+
+                const card =
+                    event.target.closest(
+                        ".team-card"
+                    );
+
+
+                if (!card) return;
+
+
+                event.preventDefault();
+
+
+                openTeamDetails(
+                    card.dataset.teamId
+                );
+
+            }
+        );
+
+
+        /* =========================================================
+           CLOSE BUTTON
+        ========================================================= */
+
+        modalClose.addEventListener(
+            "click",
+            closeTeamDetails
+        );
+
+
+        /* =========================================================
+           CLICK OUTSIDE MODAL
+        ========================================================= */
+
+        teamModal.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target === teamModal
+                ) {
+
+                    closeTeamDetails();
+
+                }
+
+            }
+        );
+
+
+        /* =========================================================
+           ESCAPE KEY
+        ========================================================= */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape" &&
+                    teamModal.classList.contains("show")
+                ) {
+
+                    closeTeamDetails();
+
+                }
+
+            }
+        );
+
+
+        /* =========================================================
+           INITIAL RENDER
+        ========================================================= */
+
+        renderTeams();
+
+
+        /* =========================================================
+           PARTICLE BACKGROUND
+        ========================================================= */
+
+        const canvas =
+            document.getElementById(
+                "cyber-canvas"
+            );
+
+
+        const ctx =
+            canvas.getContext("2d");
+
+
+        let particles = [];
+
+
+        function resizeCanvas() {
+
+            canvas.width =
+                window.innerWidth;
+
+            canvas.height =
+                window.innerHeight;
+
+        }
+
+
+        window.addEventListener(
+            "resize",
+            resizeCanvas
+        );
+
+
+        resizeCanvas();
+
+
+        class Particle {
+
+            constructor() {
+
+                this.x =
+                    Math.random() *
+                    canvas.width;
+
+
+                this.y =
+                    Math.random() *
+                    canvas.height;
+
+
+                this.size =
+                    Math.random() * 2 + 1;
+
+
+                this.speedX =
+                    Math.random() * 1 - 0.5;
+
+
+                this.speedY =
+                    Math.random() * 1 - 0.5;
+
+
+                this.color =
+                    Math.random() > 0.5
+                        ? "#00f0ff"
+                        : "#a855f7";
+
+            }
+
+
+            update() {
+
+                this.x +=
+                    this.speedX;
+
+                this.y +=
+                    this.speedY;
+
+
+                if (
+                    this.x >
+                    canvas.width
+                ) {
+                    this.x = 0;
+                }
+
+
+                if (
+                    this.x < 0
+                ) {
+                    this.x =
+                        canvas.width;
+                }
+
+
+                if (
+                    this.y >
+                    canvas.height
+                ) {
+                    this.y = 0;
+                }
+
+
+                if (
+                    this.y < 0
+                ) {
+                    this.y =
+                        canvas.height;
+                }
+
+            }
+
+
+            draw() {
+
+                ctx.fillStyle =
+                    this.color;
+
+
+                ctx.shadowBlur =
+                    10;
+
+
+                ctx.shadowColor =
+                    this.color;
+
+
+                ctx.beginPath();
+
+
+                ctx.arc(
+                    this.x,
+                    this.y,
+                    this.size,
+                    0,
+                    Math.PI * 2
+                );
+
+
+                ctx.fill();
+
+            }
+
+        }
+
+
+        function initParticles() {
+
+            particles = [];
+
+
+            for (
+                let i = 0;
+                i < 60;
+                i++
+            ) {
+
+                particles.push(
+                    new Particle()
+                );
+
+            }
+
+        }
+
+
+        function animateParticles() {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            particles.forEach(
+                particle => {
+
+                    particle.update();
+
+                    particle.draw();
+
+                }
+            );
+
+
+            requestAnimationFrame(
+                animateParticles
+            );
+
+        }
+        initParticles();
+        animateParticles();
+    </script>
+    ```
+
+</body>
+
+</html>
