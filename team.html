@@ -132,128 +132,159 @@
             position: fixed;
             top: 0;
             left: 0;
-
             width: 100%;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             padding: 20px 8%;
-
-            background: rgba(5, 8, 17, 0.88);
-
+            background: rgba(5, 8, 17, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-
-            border-bottom:
-                1px solid rgba(0, 240, 255, 0.15);
-
+            border-bottom: 1px solid rgba(0, 240, 255, 0.15);
             z-index: 1000;
         }
-
 
         .logo {
             font-family: var(--font-head);
             font-size: 1.5rem;
             font-weight: 900;
-
             color: #fff;
-
             text-decoration: none;
-
             letter-spacing: 2px;
-
             display: flex;
             align-items: center;
             gap: 10px;
-
             white-space: nowrap;
         }
-
 
         .nav-links {
             display: flex;
             gap: 30px;
-
             list-style: none;
         }
 
-
         .nav-links a {
             color: var(--text-main);
-
             text-decoration: none;
-
             font-family: var(--font-sub);
-
             font-size: 1.1rem;
             font-weight: 600;
-
             letter-spacing: 1px;
-
             transition: color 0.3s ease;
         }
 
-
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover {
             color: var(--accent-cyan);
-
-            text-shadow:
-                0 0 10px var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-cyan);
         }
-
-
-        /* =========================================================
-       BUTTON
-    ========================================================= */
 
         .btn-primary {
             display: inline-flex;
-
             align-items: center;
             justify-content: center;
-
             gap: 10px;
-
-            background:
-                linear-gradient(135deg,
-                    var(--accent-cyan),
-                    var(--accent-blue));
-
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: #000;
-
             font-family: var(--font-head);
-
             font-weight: 700;
-
-            padding: 10px 20px;
-
+            padding: 14px 32px;
             border-radius: 6px;
-
             text-decoration: none;
-
             text-transform: uppercase;
-
             letter-spacing: 1px;
-
-            box-shadow:
-                0 0 20px rgba(0, 240, 255, 0.4);
-
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
             transition: all 0.3s ease;
-
-            white-space: nowrap;
+            border: none;
+            cursor: pointer;
         }
-
 
         .btn-primary:hover {
             transform: translateY(-3px);
-
-            box-shadow:
-                0 0 35px rgba(0, 240, 255, 0.8);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.8);
         }
 
+        .nav-join {
+            flex-shrink: 0;
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            flex: 0 0 44px;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            background: rgba(0, 240, 255, .08);
+            color: var(--accent-cyan);
+            font-size: 1.15rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 850px) {
+            nav {
+                min-height: 64px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: calc(100% + 1px);
+                left: 12px;
+                right: 12px;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px;
+                background: rgba(5, 8, 17, .97);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid rgba(0, 240, 255, .2);
+                border-radius: 10px;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, .45);
+            }
+
+            nav.menu-open .nav-links {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 13px 14px;
+                border-radius: 6px;
+            }
+
+            .nav-links a:hover {
+                background: rgba(0, 240, 255, .08);
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-join {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .logo {
+                font-size: .82rem;
+                letter-spacing: 1px;
+                gap: 7px;
+            }
+        }
 
         /* =========================================================
        MAIN
@@ -1064,26 +1095,7 @@
     ========================================================= */
 
         @media (max-width: 992px) {
-
-            nav {
-                padding:
-                    18px 5%;
-            }
-
-
-            .nav-links {
-                gap:
-                    15px;
-            }
-
-
-            .nav-links a {
-                font-size:
-                    0.95rem;
-            }
-
-
-            .page {
+.page {
                 width:
                     90%;
             }
@@ -1096,30 +1108,7 @@
     ========================================================= */
 
         @media (max-width: 768px) {
-
-            nav {
-                padding:
-                    16px 5%;
-            }
-
-
-            .logo {
-                font-size:
-                    1.15rem;
-
-                letter-spacing:
-                    1px;
-            }
-
-
-            .nav-links,
-            nav>.btn-primary {
-                display:
-                    none;
-            }
-
-
-            .page {
+.page {
                 width:
                     90%;
 
@@ -1865,61 +1854,29 @@
 ========================================================= -->
 
     <nav>
-
         <a href="index.html" class="logo">
-
-            <i class="fa-solid fa-microchip glow-text-cyan"></i>
-
-            CHAKRAVYUH 1.0
-
+            <i class="fa-solid fa-microchip glow-text-cyan"></i> CHAKRAVYUH 1.0
         </a>
 
-
         <ul class="nav-links">
-
-            <li>
-                <a href="index.html#home">
-                    Home
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html#problem-areas">
-                    Problem Areas
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html#highlights">
-                    Highlights
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html#register">
-                    Register
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html#contact">
-                    Contact
-                </a>
-            </li>
-
-            <li>
-                <a href="#team" class="active">
-                    Our Team
-                </a>
-            </li>
-
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#problem-areas">Problem Areas</a></li>
+            <li><a href="index.html#highlights">Highlights</a></li>
+            <li><a href="index.html#register">Register</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="team.html">Our Team</a></li>
         </ul>
 
-
-        <a href="index.html#register" class="btn-primary">
+        <a href="index.html#register" class="btn-primary nav-join"
+           style="padding: 10px 20px; font-size: 0.85rem;">
             JOIN NOW
         </a>
 
+        <button class="nav-toggle" type="button"
+                aria-label="Open navigation"
+                aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </nav>
 
 
@@ -2092,6 +2049,34 @@
 ========================================================= -->
 
     <script>
+
+        const nav = document.querySelector('nav');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        if (nav && navToggle) {
+            navToggle.addEventListener('click', () => {
+                const open = nav.classList.toggle('menu-open');
+                navToggle.setAttribute('aria-expanded', String(open));
+                navToggle.setAttribute(
+                    'aria-label',
+                    open ? 'Close navigation' : 'Open navigation'
+                );
+
+                navToggle.innerHTML = open
+                    ? '<i class="fa-solid fa-xmark"></i>'
+                    : '<i class="fa-solid fa-bars"></i>';
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('menu-open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navToggle.setAttribute('aria-label', 'Open navigation');
+                    navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                });
+            });
+        }
 
         /* =========================================================
            TEAM DATA
