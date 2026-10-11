@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CHAKRAVYUH 1.0 Gallery, Judges, Participants, Teams and Memories">
+    <title>CHAKRAVYUH 1.0 | Gallery & Participants</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #050811;
+            --bg-card: rgba(10, 16, 30, 0.72);
+            --border-card: rgba(0, 240, 255, 0.18);
+            --accent-cyan: #00f0ff;
+            --accent-blue: #0072ff;
+            --accent-green: #00ff66;
+            --accent-purple: #a855f7;
+            --accent-orange: #ff6b00;
+            --accent-pink: #ff007f;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --font-head: 'Orbitron', sans-serif;
+            --font-sub: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* EXACT HOME PAGE BACKGROUND */
+        #cyber-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 72px;
+            padding: 16px clamp(14px, 6vw, 8%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: rgba(5, 8, 17, .88);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 240, 255, .15);
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #fff;
+            text-decoration: none;
+            font-family: var(--font-head);
+            font-size: clamp(.9rem, 2vw, 1.35rem);
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .logo i {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 15px rgba(0, 240, 255, .7);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 2vw, 28px);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-family: var(--font-sub);
+            font-size: clamp(.82rem, 1.35vw, 1.05rem);
+            font-weight: 600;
+            letter-spacing: .6px;
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 11px 21px;
+            border: 0;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: #000;
+            text-decoration: none;
+            font-family: var(--font-head);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, .35);
+            transition: .25s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 240, 255, .65);
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            background: rgba(0, 240, 255, .07);
+            color: var(--accent-cyan);
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        /* COMMON */
+        .page {
+            padding-top: 110px;
+        }
+
+        .section-shell {
+            width: min(1400px, 92%);
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 85px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-heading .eyebrow {
+            color: var(--accent-cyan);
+            font-family: var(--font-head);
+            font-size: .78rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .section-heading h2 {
+            font-family: var(--font-head);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1.15;
+            letter-spacing: 1.5px;
+        }
+
+        .section-heading p {
+            color: var(--text-muted);
+            max-width: 760px;
+            margin: 15px auto 0;
+        }
+
+        .glow {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 18px rgba(0, 240, 255, .55);
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, .18);
+        }
+
+        /* HERO */
+        .gallery-hero {
+            min-height: 55vh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-orbit {
+            position: absolute;
+            width: min(520px, 75vw);
+            aspect-ratio: 1;
+            border: 1px dashed rgba(0, 240, 255, .18);
+            border-radius: 50%;
+            animation: spin 22s linear infinite;
+        }
+
+        .hero-orbit::before,
+        .hero-orbit::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(168, 85, 247, .2);
+        }
+
+        .hero-orbit::before {
+            inset: 12%;
+        }
+
+        .hero-orbit::after {
+            inset: 25%;
+            border-color: rgba(0, 240, 255, .2);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 15px;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 20px;
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, .08);
+            font-family: var(--font-head);
+            font-size: .75rem;
+            letter-spacing: 2px;
+            box-shadow: 0 0 18px rgba(0, 240, 255, .16);
+        }
+
+        .hero-content h1 {
+            margin-top: 22px;
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: clamp(2.2rem, 7vw, 5.4rem);
+            line-height: 1.05;
+            background: linear-gradient(180deg, #fff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content h2 {
+            margin-top: 12px;
+            color: var(--accent-cyan);
+            font-family: var(--font-sub);
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            margin: 20px auto 0;
+            max-width: 700px;
+            color: var(--text-muted);
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 21px;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 6px;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-family: var(--font-head);
+            font-size: .82rem;
+            font-weight: 700;
+            background: rgba(0, 240, 255, .04);
+            transition: .25s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 240, 255, .12);
+            transform: translateY(-2px);
+        }
+
+        /* JUDGES */
+        .judge-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .judge-card {
+            padding: 25px 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: .3s ease;
+        }
+
+        .judge-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 240, 255, .5);
+            box-shadow: 0 12px 35px rgba(0, 240, 255, .1);
+        }
+
+        .judge-photo {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-cyan);
+            background: linear-gradient(145deg, rgba(0, 240, 255, .12), rgba(168, 85, 247, .12));
+            display: grid;
+            place-items: center;
+            color: var(--accent-cyan);
+            font-size: 2.2rem;
+            box-shadow: 0 0 24px rgba(0, 240, 255, .18);
+        }
+
+        .judge-card h3 {
+            font-family: var(--font-head);
+            font-size: 1rem;
+        }
+
+        .judge-card .designation {
+            color: var(--accent-cyan);
+            font-family: var(--font-sub);
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .judge-card .college {
+            color: var(--text-muted);
+            font-size: .85rem;
+            margin-top: 6px;
+        }
+
+        /* TEAMS */
+        .team-tools {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .team-count {
+            font-family: var(--font-head);
+            color: var(--accent-cyan);
+            font-size: .9rem;
+        }
+
+        .team-table-wrap {
+            overflow-x: auto;
+            border-radius: 14px;
+            border: 1px solid var(--border-card);
+            background: rgba(10, 16, 30, .55);
+        }
+
+        table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 15px 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        th {
+            color: var(--accent-cyan);
+            font-family: var(--font-head);
+            font-size: .75rem;
+            letter-spacing: 1px;
+            background: rgba(0, 240, 255, .045);
+        }
+
+        td {
+            color: #dbe7ef;
+            font-size: .9rem;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        tr:hover td {
+            background: rgba(0, 240, 255, .025);
+        }
+
+        .team-number {
+            color: var(--accent-cyan);
+            font-family: var(--font-head);
+            font-weight: 700;
+        }
+
+        .reg-id {
+            color: var(--accent-purple);
+            font-family: var(--font-sub);
+            font-weight: 700;
+        }
+
+        .member-list {
+            color: var(--text-muted);
+        }
+
+        /* PHOTOS */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .photo-card {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            background: linear-gradient(135deg, rgba(0, 240, 255, .08), rgba(168, 85, 247, .08));
+        }
+
+        .photo-placeholder {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            color: rgba(0, 240, 255, .65);
+            font-family: var(--font-head);
+            font-size: .85rem;
+            letter-spacing: 1px;
+        }
+
+        .photo-placeholder i {
+            display: block;
+            font-size: 2.2rem;
+            margin-bottom: 7px;
+            text-align: center;
+        }
+
+        .photo-caption {
+            position: relative;
+            width: 100%;
+            padding: 12px 14px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, .9));
+            font-family: var(--font-sub);
+            font-weight: 700;
+        }
+
+        .photo-caption span {
+            display: block;
+            color: var(--text-muted);
+            font-size: .78rem;
+            font-weight: 500;
+        }
+
+        /* DRIVE */
+        .drive-card {
+            padding: 42px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 35px;
+            border-color: rgba(0, 255, 102, .2);
+        }
+
+        .drive-icon {
+            width: 76px;
+            height: 76px;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
+            background: rgba(0, 255, 102, .08);
+            border: 1px solid rgba(0, 255, 102, .3);
+            color: var(--accent-green);
+            font-size: 2rem;
+        }
+
+        .drive-copy h2 {
+            font-family: var(--font-head);
+            font-size: clamp(1.35rem, 3vw, 2rem);
+            margin-bottom: 7px;
+        }
+
+        .drive-copy p {
+            color: var(--text-muted);
+            max-width: 720px;
+        }
+
+        .drive-btn {
+            background: linear-gradient(135deg, #00ff66, #00b84d);
+            box-shadow: 0 0 20px rgba(0, 255, 102, .22);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 0 25px;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            background: rgba(2, 4, 10, .88);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.4fr;
+            gap: 35px;
+        }
+
+        footer h3,
+        footer h4 {
+            font-family: var(--font-head);
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        footer h3 {
+            color: var(--accent-cyan);
+        }
+
+        footer p,
+        footer li,
+        footer a {
+            color: var(--text-muted);
+            font-size: .9rem;
+        }
+
+        footer a {
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        footer a:hover {
+            color: var(--accent-cyan);
+        }
+
+        footer ul {
+            list-style: none;
+            display: grid;
+            gap: 6px;
+        }
+
+        .copyright {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, .05);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: .8rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width:1100px) {
+            .judge-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .photo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+        }
+
+        @media (max-width:850px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-join {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                padding: 14px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 3px;
+                background: rgba(5, 8, 17, .98);
+                border-bottom: 1px solid rgba(0, 240, 255, .18);
+                box-shadow: 0 20px 35px rgba(0, 0, 0, .3);
+            }
+
+            nav.menu-open .nav-links {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 14px;
+                border-radius: 6px;
+            }
+
+            .nav-links a:hover {
+                background: rgba(0, 240, 255, .07);
+            }
+
+            .drive-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .drive-icon {
+                margin: auto;
+            }
+
+            .drive-card .btn-primary {
+                justify-self: center;
+            }
+        }
+
+        @media (max-width:650px) {
+            .page {
+                padding-top: 88px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .section-shell {
+                width: min(92%, 560px);
+            }
+
+            .judge-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .drive-card {
+                padding: 28px 20px;
+            }
+
+            .hero-orbit {
+                width: 95vw;
+            }
+        }
+
+        @media (max-width:430px) {
+            .logo {
+                font-size: .78rem;
+                letter-spacing: 1px;
+            }
+
+            .judge-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-card {
+                aspect-ratio: 16/10;
+            }
+
+            .hero-content h1 {
+                font-size: 2.15rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Same animated background as home.html -->
+    <canvas id="cyber-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="home.html" class="logo"><i class="fa-solid fa-microchip"></i> CHAKRAVYUH 1.0</a>
+        <ul class="nav-links">
+            <li><a href="home.html#home">Home</a></li>
+            <li><a href="home.html#problem-areas">Problem Areas</a></li>
+            <li><a href="home.html#highlights">Highlights</a></li>
+            <li><a href="home.html#register">Register</a></li>
+            <li><a href="home.html#contact">Contact</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
+        </ul>
+        <a href="home.html#register" class="btn-primary nav-join">JOIN NOW</a>
+        <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><i
+                class="fa-solid fa-bars"></i></button>
+    </nav>
+
+    <main class="page">
+        <!-- HERO -->
+        <section class="gallery-hero section-shell">
+            <div class="hero-orbit" aria-hidden="true"></div>
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fa-solid fa-images"></i> PARTICIPANTS • MEMORIES • MOMENTS</div>
+                <h1>GALLERY &amp; PARTICIPANTS</h1>
+                <h2>CHAKRAVYUH 1.0 • 8 HRS HACKATHON</h2>
+                <p>Explore our judges, participating teams, event photographs, and the shared memory archive of
+                    CHAKRAVYUH 1.0.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="#participants">VIEW PARTICIPANTS <i
+                            class="fa-solid fa-arrow-down"></i></a>
+                    <a class="btn-outline" href="#photos">VIEW PHOTOS</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- JUDGES -->
+        <section id="judges">
+            <div class="section-shell">
+                <div class="section-heading">
+                    <div class="eyebrow">DISTINGUISHED PANEL</div>
+                    <h2>OUR <span class="glow">JUDGES</span></h2>
+                    <p>Meet the five distinguished judges evaluating innovation, execution, impact, and presentation.
+                    </p>
+                </div>
+                <div class="judge-grid">
+                    <!-- Replace these placeholders with actual details -->
+                    <article class="judge-card glass-card">
+                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3>Judge 01</h3>
+                        <div class="designation">Designation</div>
+                        <div class="college">College / Organization Name</div>
+                    </article>
+                    <article class="judge-card glass-card">
+                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3>Judge 02</h3>
+                        <div class="designation">Designation</div>
+                        <div class="college">College / Organization Name</div>
+                    </article>
+                    <article class="judge-card glass-card">
+                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3>Judge 03</h3>
+                        <div class="designation">Designation</div>
+                        <div class="college">College / Organization Name</div>
+                    </article>
+                    <article class="judge-card glass-card">
+                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3>Judge 04</h3>
+                        <div class="designation">Designation</div>
+                        <div class="college">College / Organization Name</div>
+                    </article>
+                    <article class="judge-card glass-card">
+                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3>Judge 05</h3>
+                        <div class="designation">Designation</div>
+                        <div class="college">College / Organization Name</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- PHOTOS -->
+        <section id="photos">
+            <div class="section-shell">
+                <div class="section-heading">
+                    <div class="eyebrow">EVENT MOMENTS</div>
+                    <h2>PHOTO <span class="glow">GALLERY</span></h2>
+                    <p>Add event photographs here — registration, inauguration, coding, mentoring, judging, prizes, team
+                        moments, and the closing ceremony.</p>
+                </div>
+                <div class="photo-grid">
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 01</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 02</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 03</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 04</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 05</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 06</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 07</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 08</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 09</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 10</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 11</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 12</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 13</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 14</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 15</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                    <article class="photo-card glass-card">
+                        <div class="photo-placeholder">
+                            <div><i class="fa-regular fa-image"></i>PHOTO 16</div>
+                        </div>
+                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- GOOGLE DRIVE -->
+        <section id="memories">
+            <div class="section-shell">
+                <div class="drive-card glass-card">
+                    <div class="drive-copy">
+                        <div class="drive-icon"><i class="fa-brands fa-google-drive"></i></div>
+                        <h2>PARTICIPANT <span class="glow">MEMORIES</span></h2>
+                        <p>Access the complete collection of participant photos, team memories, event videos,
+                            certificates, and other shared files from Google Drive.</p>
+                    </div>
+                    <!-- Replace the # below with your actual Google Drive shared-folder URL -->
+                    <a class="btn-primary drive-btn" href="#" target="_blank" rel="noopener" id="driveLink"><i
+                            class="fa-brands fa-google-drive"></i> OPEN GOOGLE DRIVE</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="section-shell footer-grid">
+            <div>
+                <h3>CHAKRAVYUH 1.0</h3>
+                <p>8 HRS HACKATHON</p>
+                <p style="margin-top:8px;">THINK • BUILD • SOLVE • CONQUER</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="home.html#home">Home</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="home.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Gallery</h4>
+                <ul>
+                    <li><a href="#judges">Judges</a></li>
+                    <li><a href="#participants">Participants</a></li>
+                    <li><a href="#photos">Photos</a></li>
+                    <li><a href="#memories">Memories</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Venue</h4>
+                <p>Bansal Institute of Engineering and Technology, Lucknow</p>
+            </div>
+        </div>
+        <div class="section-shell copyright">© 2026 CHAKRAVYUH 1.0. All Rights Reserved.</div>
+    </footer>
+
+    <script>
+        const nav = document.querySelector('nav');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        if (nav && navToggle) {
+            navToggle.addEventListener('click', () => {
+                const open = nav.classList.toggle('menu-open');
+                navToggle.setAttribute('aria-expanded', String(open));
+                navToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+                navToggle.innerHTML = open
+                    ? '<i class="fa-solid fa-xmark"></i>'
+                    : '<i class="fa-solid fa-bars"></i>';
+            });
+            navLinks.forEach(link => link.addEventListener('click', () => {
+                nav.classList.remove('menu-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Open navigation');
+                navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            }));
+        }
+    </script>
+
+    <!-- SAME BACKGROUND PARTICLE SCRIPT AS HOME.HTML -->
+    <script>
+        const canvas = document.getElementById('cyber-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = Math.random() > 0.5 ? '#00f0ff' : '#a855f7';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < 60; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
+
+</body>
+
+</html>
