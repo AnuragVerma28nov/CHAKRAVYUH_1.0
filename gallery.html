@@ -316,6 +316,42 @@
             color: var(--text-muted);
         }
 
+        .coming-soon {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 7px;
+            margin-top: 24px;
+            padding: 14px 24px;
+            border: 1px solid rgba(255, 107, 0, .75);
+            border-radius: 10px;
+            background: rgba(255, 107, 0, .08);
+            box-shadow: 0 0 22px rgba(255, 107, 0, .12), inset 0 0 18px rgba(255, 107, 0, .035);
+        }
+
+        .coming-soon-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: #ff9b45;
+            font-family: var(--font-head);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px rgba(255, 107, 0, .35);
+        }
+
+        .coming-soon p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: .92rem;
+        }
+
+        .coming-soon-date {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
         .hero-actions {
             display: flex;
             justify-content: center;
@@ -754,13 +790,13 @@
 
     <!-- NAVIGATION -->
     <nav>
-        <a href="home.html" class="logo"><i class="fa-solid fa-microchip"></i> CHAKRAVYUH 1.0</a>
+        <a href="index.html" class="logo"><i class="fa-solid fa-microchip"></i> CHAKRAVYUH 1.0</a>
         <ul class="nav-links">
-            <li><a href="home.html#home">Home</a></li>
-            <li><a href="home.html#problem-areas">Problem Areas</a></li>
-            <li><a href="home.html#highlights">Highlights</a></li>
-            <li><a href="home.html#register">Register</a></li>
-            <li><a href="home.html#contact">Contact</a></li>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#problem-areas">Problem Areas</a></li>
+            <li><a href="index.html#highlights">Highlights</a></li>
+            <li><a href="index.html#register">Register</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
             <li><a href="team.html">Our Team</a></li>
             <li><a href="gallery.html" class="active">Gallery</a></li>
         </ul>
@@ -777,8 +813,13 @@
                 <div class="hero-badge"><i class="fa-solid fa-images"></i> PARTICIPANTS • MEMORIES • MOMENTS</div>
                 <h1>GALLERY &amp; PARTICIPANTS</h1>
                 <h2>CHAKRAVYUH 1.0 • 8 HRS HACKATHON</h2>
-                <p>Explore our judges, participating teams, event photographs, and the shared memory archive of
+                <p>Event photographs, and the shared memory archive of
                     CHAKRAVYUH 1.0.</p>
+                <div class="coming-soon" role="status" aria-label="Gallery coming soon">
+                    <div class="coming-soon-title"><i class="fa-solid fa-hourglass-half"></i> COMING SOON</div>
+                    <p>Our gallery is currently under development.</p>
+                    <p>It will be available <span class="coming-soon-date">after 15 October 2026</span>.</p>
+                </div>
                 <div class="hero-actions">
                     <a class="btn-primary" href="#participants">VIEW PARTICIPANTS <i
                             class="fa-solid fa-arrow-down"></i></a>
@@ -787,176 +828,6 @@
             </div>
         </section>
 
-        <!-- JUDGES -->
-        <section id="judges">
-            <div class="section-shell">
-                <div class="section-heading">
-                    <div class="eyebrow">DISTINGUISHED PANEL</div>
-                    <h2>OUR <span class="glow">JUDGES</span></h2>
-                    <p>Meet the five distinguished judges evaluating innovation, execution, impact, and presentation.
-                    </p>
-                </div>
-                <div class="judge-grid">
-                    <!-- Replace these placeholders with actual details -->
-                    <article class="judge-card glass-card">
-                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
-                        <h3>Judge 01</h3>
-                        <div class="designation">Designation</div>
-                        <div class="college">College / Organization Name</div>
-                    </article>
-                    <article class="judge-card glass-card">
-                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
-                        <h3>Judge 02</h3>
-                        <div class="designation">Designation</div>
-                        <div class="college">College / Organization Name</div>
-                    </article>
-                    <article class="judge-card glass-card">
-                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
-                        <h3>Judge 03</h3>
-                        <div class="designation">Designation</div>
-                        <div class="college">College / Organization Name</div>
-                    </article>
-                    <article class="judge-card glass-card">
-                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
-                        <h3>Judge 04</h3>
-                        <div class="designation">Designation</div>
-                        <div class="college">College / Organization Name</div>
-                    </article>
-                    <article class="judge-card glass-card">
-                        <div class="judge-photo"><i class="fa-solid fa-user-tie"></i></div>
-                        <h3>Judge 05</h3>
-                        <div class="designation">Designation</div>
-                        <div class="college">College / Organization Name</div>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <!-- PHOTOS -->
-        <section id="photos">
-            <div class="section-shell">
-                <div class="section-heading">
-                    <div class="eyebrow">EVENT MOMENTS</div>
-                    <h2>PHOTO <span class="glow">GALLERY</span></h2>
-                    <p>Add event photographs here — registration, inauguration, coding, mentoring, judging, prizes, team
-                        moments, and the closing ceremony.</p>
-                </div>
-                <div class="photo-grid">
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 01</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 02</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 03</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 04</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 05</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 06</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 07</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 08</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 09</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 10</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 11</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 12</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 13</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 14</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 15</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                    <article class="photo-card glass-card">
-                        <div class="photo-placeholder">
-                            <div><i class="fa-regular fa-image"></i>PHOTO 16</div>
-                        </div>
-                        <div class="photo-caption">CHAKRAVYUH 1.0<span>Event Memory</span></div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- GOOGLE DRIVE -->
-        <section id="memories">
-            <div class="section-shell">
-                <div class="drive-card glass-card">
-                    <div class="drive-copy">
-                        <div class="drive-icon"><i class="fa-brands fa-google-drive"></i></div>
-                        <h2>PARTICIPANT <span class="glow">MEMORIES</span></h2>
-                        <p>Access the complete collection of participant photos, team memories, event videos,
-                            certificates, and other shared files from Google Drive.</p>
-                    </div>
-                    <!-- Replace the # below with your actual Google Drive shared-folder URL -->
-                    <a class="btn-primary drive-btn" href="#" target="_blank" rel="noopener" id="driveLink"><i
-                            class="fa-brands fa-google-drive"></i> OPEN GOOGLE DRIVE</a>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- FOOTER -->
@@ -970,19 +841,10 @@
             <div>
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="home.html#home">Home</a></li>
+                    <li><a href="index.html#home">Home</a></li>
                     <li><a href="team.html">Our Team</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="home.html#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Gallery</h4>
-                <ul>
-                    <li><a href="#judges">Judges</a></li>
-                    <li><a href="#participants">Participants</a></li>
-                    <li><a href="#photos">Photos</a></li>
-                    <li><a href="#memories">Memories</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
             <div>
